@@ -48,7 +48,7 @@ ISR(WDT_vect) { Sleepy::watchdogEvent(); }
 #define ACK_RETRY_PERIOD 10
 
 // Maximum number of times to retry
-#define ACK_RETRY_LIMIT 5  
+#define ACK_RETRY_LIMIT 5
 
 
 // serialized payload
@@ -101,7 +101,7 @@ static void sendPayload(){
     }
 
     // if no ack received wait and try again
-    delay(ACK_RETRY_PERIOD * 100);
+    delay(ACK_RETRY_PERIOD * 100);
   }
 }
 

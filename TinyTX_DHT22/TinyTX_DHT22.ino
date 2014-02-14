@@ -47,7 +47,7 @@ ISR(WDT_vect) { Sleepy::watchdogEvent(); }
 #define ACK_RETRY_PERIOD 10
 
 // Maximum number of times to retry
-#define ACK_RETRY_LIMIT 5  
+#define ACK_RETRY_LIMIT 5
 
 
 // serialized payload
@@ -56,7 +56,7 @@ struct {
   byte reserved :1;  // Reserved for future use. Must be zero.
   // data
   int  temp     :10; // Temperature: -512..+512 (tenths)
-  byte humi     :7;  // Humidity: 0..100
+  byte humi     :7;  // Humidity: 0..100
   int  vcc      :12; // Supply voltage: < 4096 mv
 } payload;
 
@@ -100,7 +100,7 @@ static void sendPayload(){
     }
 
     // if no ack received wait and try again
-    delay(ACK_RETRY_PERIOD * 100);
+    delay(ACK_RETRY_PERIOD * 100);
   }
 }
 
