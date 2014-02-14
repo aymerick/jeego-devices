@@ -78,11 +78,11 @@ struct {
   byte kind     :7;  // Node kind
   byte reserved :1;  // Reserved for future use. Must be zero.
   // data
-  byte light;        // Light sensor: 0..255
-  byte moved    :1;  // Motion detector: 0..1
-  byte humi     :7;  // Humidity: 0..100
   int  temp     :10; // Temperature: -500..+500 (tenths)
-  byte lobat    :1;  // Supply voltage dropped under 3.1V: 0..1
+  byte humi     :7;  // Humidity: 0..100
+  byte light;        // Light sensor: 0..255
+  byte motion   :1;  // Motion detector: 0..1
+  byte lowbat   :1;  // Supply voltage dropped under 3.1V: 0..1
 } payload;
 
 // Interface to a Passive Infrared motion sensor.
@@ -205,13 +205,13 @@ static void doReport() {
 #if DEBUG
   Serial.print((int) payload.light);
   Serial.print(' ');
-  Serial.print((int) payload.moved);
+  Serial.print((int) payload.motion);
   Serial.print(' ');
   Serial.print((int) payload.humi);
   Serial.print(' ');
   Serial.print((int) payload.temp);
   Serial.print(' ');
-  Serial.print((int) payload.lobat);
+  Serial.print((int) payload.lowbat);
   Serial.println();
   serialFlush();
 #endif
@@ -239,7 +239,7 @@ void readLDR() {
 
 // read Battery status
 void readLowBat() {
-  payload.lobat = rf12_lowbat();
+  payload.lowbat = rf12_lowbat();
 }
 
 // spend a little time in power down mode while the SHT11 does a measurement
@@ -266,7 +266,7 @@ static void readSensors() {
   readLowBat();
   readSHT11();
 
-  payload.moved = sensorPIR.state();
+  payload.motion = sensorPIR.state();
 }
 
 
@@ -312,11 +312,11 @@ void loop() {
 #endif
 
   if (sensorPIR.stateChanged()) {
-    payload.moved = sensorPIR.state();
+    payload.motion = sensorPIR.state();
 
 #if DEBUG
     Serial.print("PIR ");
-    Serial.print((int) payload.moved);
+    Serial.print((int) payload.motion);
     serialFlush();
 #endif
 

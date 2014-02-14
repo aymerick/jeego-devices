@@ -55,10 +55,10 @@ struct {
   byte kind     :7;  // Node kind
   byte reserved :1;  // Reserved for future use. Must be zero.
   // data
+  int  temp     :10; // Temperature: -512..+512 (tenths)
+  byte humi     :7;  // Humidity: 0..100
   byte light;        // Light sensor: 0..255
   byte lowbat   :1;  // Supply voltage dropped under 3.1V: 0..1
-  byte humi     :7;  // Humidity: 0..100
-  int  temp     :10; // Temperature: -512..+512 (tenths)
 } payload;
 
 // sensors

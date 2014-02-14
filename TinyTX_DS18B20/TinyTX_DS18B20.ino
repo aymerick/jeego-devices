@@ -20,7 +20,7 @@ ISR(WDT_vect) { Sleepy::watchdogEvent(); }
 #define NODE_KIND 3
 
 // RF12 node ID in the range 1-30
-#define myNodeID 30
+#define myNodeID 29
 
 // RF12 Network group
 #define network 212
@@ -56,8 +56,8 @@ struct {
   byte kind     :7;  // Node kind
   byte reserved :1;  // Reserved for future use. Must be zero.
   // data
-  int  vcc      :12; // Supply voltage: < 4096 mv
   int  temp     :10; // Temperature: -512..+512 (tenths)
+  int  vcc      :12; // Supply voltage: < 4096 mv
 } payload;
 
 
