@@ -1,7 +1,7 @@
 jeego-devices
 =============
 
-DIY devices used for [jeego](https://github.com/aymerick/jeego).
+DIY devices for [jeego](https://github.com/aymerick/jeego).
 
 
 Jeenode
@@ -59,7 +59,7 @@ Program ATTiny84:
 Build circuit:
 
   - You can try on a stripboard with: <http://nathan.chantrell.net/downloads/arduino/tinytx/tinytx_stripboard_ds18b20.png>
-  - You cann too order PCBs from SeeedStudio as explained here: <http://nathan.chantrell.net/tinytx-wireless-sensor/#div-comment-190398>
+  - You can too order PCBs from SeeedStudio as explained here: <http://nathan.chantrell.net/tinytx-wireless-sensor/#div-comment-190398>
 
 Issues:
 
