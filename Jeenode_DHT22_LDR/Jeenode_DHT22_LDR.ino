@@ -57,7 +57,7 @@ struct {
   // data
   int  temp     :10; // Temperature: -512..+512 (tenths)
   byte humi     :7;  // Humidity: 0..100
-  byte light;        // Light sensor: 0..255
+  byte light    :8;  // Light sensor: 0..255
   byte lowbat   :1;  // Supply voltage dropped under 3.1V: 0..1
 } payload;
 
